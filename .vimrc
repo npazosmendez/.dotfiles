@@ -73,14 +73,10 @@ vnoremap S "+D
  " move lines (==, gv and gi are for reindentation)
 nnoremap <S-j> :m .+1<CR>==
 nnoremap <S-k> :m .-2<CR>==
-inoremap <S-j> <Esc>:m .+1<CR>==gi
-inoremap <S-k> <Esc>:m .-2<CR>==gi
 vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
-inoremap <S-Down> <Esc>:m .+1<CR>==gi
-inoremap <S-Up> <Esc>:m .-2<CR>==gi
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 vnoremap <S-Up> :m '<-2<CR>gv=gv
  " execute within file
@@ -121,3 +117,6 @@ endif
 " map redo to S-u?
 " avoiding esc inoremap <S-CR> <ESC> don't work
 " research about how mapping works, what happens to original mappings, recursion, etc
+" add mapping to block indent in visual mode
+" shift-arrow keys moves cursor to the beginning :(
+" smart wrap
