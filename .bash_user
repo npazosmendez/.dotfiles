@@ -1,3 +1,5 @@
-% Disables 'feature' activated with Ctrl-S which disables terminal output
-% More Info: https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+#!/bin/bash
+
+# Disables 'feature' activated with Ctrl-S which disables terminal output
+# More Info: https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
