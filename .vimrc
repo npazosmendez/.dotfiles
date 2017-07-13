@@ -30,11 +30,12 @@ colo Monokai
 
 " Tabulations
 set noautoindent   " oh gosh, then who's responsible for
-set nocindent      " indentation? I'll have to 
-set nosmartindent  " check eventually
+set nocindent      "  indentation? I'll have to check eventually 
+set nosmartindent
 set indentexpr=    " it's related to automatic indentation, also for homework
-set tabstop=4 " Tab width
+set tabstop=4 " tab width
 set shiftwidth=4 " ???
+set expandtab " tab as spaces
 
 " Mappings
 let mapleader = "," " mapping namespace
@@ -120,3 +121,4 @@ endif
 " add mapping to block indent in visual mode
 " shift-arrow keys moves cursor to the beginning :(
 " smart wrap
+" search in delimitMate how to move to closest opening/closing braces
