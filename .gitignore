@@ -3,10 +3,5 @@
 
 !.vimrc
 !.bash_aliases
-!.git_config
 !.bash_user
 !.tmux.conf
-
-!.kde/share/config/dolphinrc
-!.kde/share/apps/dolphin/dolphinui.rc
-!.kde/share/apps/okular/part.rc
