@@ -13,6 +13,8 @@ okular
 kolourpaint4
 gimp
 
+g++
+
 trash-cli
 xbindkeys
 "
