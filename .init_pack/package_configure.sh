@@ -4,10 +4,8 @@
 cd ~/
 
 # 'Clone' dotfiles on home directory
-#   (-t forces
 git init .
-git remote add -t \* -f origin https://github.com/eyesmd/dotfiles.git
-   # -f forces a fetch after adding the remote repo, -t 
+git remote add -t \* -f origin https://github.com/eyesmd/dotfiles.git # -f forces a fetch after adding the remote repo, -t idk 
 git checkout master
 
 # Tmux setup
@@ -20,5 +18,3 @@ tmux kill-server   # killing the server is not required, I guess
 # Vim setup
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-
-# (Vim: Fugitive isn't loading)
