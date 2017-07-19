@@ -15,6 +15,10 @@ gimp
 
 g++
 
+build-essential
+libx11-dev
+libgtk2.0-dev
+
 xclip
 trash-cli
 xbindkeys
