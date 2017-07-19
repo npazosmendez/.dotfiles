@@ -15,6 +15,7 @@ gimp
 
 g++
 
+xclip
 trash-cli
 xbindkeys
 "
