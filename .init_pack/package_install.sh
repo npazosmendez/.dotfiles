@@ -14,10 +14,12 @@ kolourpaint4
 gimp
 
 g++
+nasm
 
 build-essential
 libx11-dev
 libgtk2.0-dev
+libreadline-dev
 
 xclip
 trash-cli
