@@ -15,12 +15,14 @@ gimp
 
 g++
 nasm
+texlive-full
 
 build-essential
 libx11-dev
 libgtk2.0-dev
 libreadline-dev
 
+imagemagick
 xclip
 trash-cli
 xbindkeys
