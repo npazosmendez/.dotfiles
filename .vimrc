@@ -17,9 +17,11 @@ filetype plugin indent on
 " General Settings
 set number " line numbers
 set mouse=a " mouse enabled
-set nowrap " no line wrap
 set showcmd " display incomplete commands
 set ruler " show cursor position
+set wrap lbr " line wrap by words
+set breakindent " indents line wraps
+set breakindentopt=shift:1 " extra indent on line wraps
 set virtualedit=block " allow cursor anywhere in block vmode
 set incsearch " search from currently typed
 
@@ -80,6 +82,15 @@ nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 vnoremap <S-Up> :m '<-2<CR>gv=gv
+ " visually moving through line wraps
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
  " execute within file
 autocmd FileType python nnoremap <buffer> <F9> :!clear;python %<cr>
 autocmd FileType c nnoremap <buffer> <F9> :!clear && gcc -std=c99 % && echo "Program Start:" && echo && ./a.out && echo && rm a.out <cr>
