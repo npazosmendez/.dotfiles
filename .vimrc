@@ -116,22 +116,40 @@ if &term =~ '256color'
   highlight Statement ctermbg=none
 endif
 
+" Learning
+" basic toolbelt: r,ysp,hjkl,xd,uC-R,ia,v,:eE
+" 'fx','Fx','tX','TX' find and 'till motions
+" 'c' for replacing
+" 'r' for replacing a character
+" 'A' for appending at the end of line
+" 'I' for inserting at the beginning of the file
+" '%' for searching matching parentheses/braces/brackets
+" '/' and '?' for searching patterns
+" '*' and '#' for searching words
+" 'g*' and 'g#' for matching words
+" '#gg' go to line #
+" 'G' to go to last line
+" 'gv' to reselect last block
+" 'ctrl-o' in insert mode allows a normal mode command
+" 'ctrl-o' and 'ctrl-i' to go back and forth between cursor positions
+" ':s' search and replace
+"  - 'g' flag allows multiple replaces in a single line
+"  - 'c' flag asks for confirmation
+"  - ranges: '%' all file, '.,$' from current line until the eof
+" tip: command + search pattern
+" tip: an empty string will repeat a search pattern
 
 " To Investigate
 " http://vim.wikia.com/wiki/Indenting_source_code
 " https://blog.aaronbieber.com/2013/12/03/master-vim-registers-with-ctrl-r.html
-" How do I abort the current command if I fucked up?
+" http://vim.wikia.com/wiki/Using_undo_branches Plugin 'command-t' for more dark magic
 " Plugin 'christoomey/vim-run-interactive' for bash commands from vim
 " Plugin 'pbrisbin/vim-mkdir' for creating directories
 " Plugin 'vim-syntastic' for dark magic
-" Plugin 'command-t' for more dark magic
-" ctrl-o in insert mode enters normal mode for 1 command only
-" Capslock and Escape can be exchanged via xmodmap
 " nmap <S-CR> O<Esc> don't work
 " map redo to S-u?
 " avoiding esc inoremap <S-CR> <ESC> don't work
 " research about how mapping works, what happens to original mappings, recursion, etc
 " add mapping to block indent in visual mode
 " shift-arrow keys moves cursor to the beginning :(
-" smart wrap
 " search in delimitMate how to move to closest opening/closing braces
