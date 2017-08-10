@@ -91,11 +91,13 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
  " execute within file
 autocmd FileType python nnoremap <buffer> <F9> :!clear;python %<cr>
 autocmd FileType c nnoremap <buffer> <F9> :!clear && gcc -std=c99 % && echo "Program Start:" && echo && ./a.out && echo && rm a.out <cr>
 autocmd FileType cpp nnoremap <buffer> <F9> :!clear && g++ -std=c++11 -g -Wall % && echo "Program Start:" && echo && ./a.out && echo && rm a.out <cr>
-autocmd FileType tex nnoremap <buffer> <F9> :!clear;pdflatex main.tex;evince main.pdf &<cr>
+autocmd FileType tex nnoremap <buffer> <F9> :!clear;pdflatex main.tex;okular main.pdf &<cr>
 
 syntax on " so 'hightlight' works
 
