@@ -24,6 +24,7 @@ set breakindent " indents line wraps
 set breakindentopt=shift:1 " extra indent on line wraps
 set virtualedit=block " allow cursor anywhere in block vmode
 set incsearch " search from currently typed
+set noswapfile " what it says on the tin
 
 " Colorschemes
 colo Monokai
