@@ -12,6 +12,7 @@ kffmpegthumbnailer
 okular
 kolourpaint4
 gimp
+libreoffice
 
 g++
 nasm
