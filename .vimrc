@@ -49,6 +49,8 @@ nnoremap <C-j> 3j3<C-e>
 nnoremap <C-k> 3k3<C-y>
  " newline
 nmap <CR> o<Esc>
+ " ex command prefix
+nnoremap º :
  " replace/substitute operator remap
 nnoremap R s
 vnoremap R s
