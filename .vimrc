@@ -31,14 +31,16 @@ colo Monokai
 "colo vividchalk
 "colo zenburn
 
-" Tabulations
-set noautoindent   " oh gosh, then who's responsible for
-set nocindent      "  indentation? I'll have to check eventually 
-set nosmartindent
-set indentexpr=    " it's related to automatic indentation, also for homework
+" Indentations
+set noautoindent   " ??
+set nocindent      " ?? 
+set nosmartindent  " ??
+set indentexpr=    " ??
 set tabstop=4 " tab width
-set shiftwidth=4 " ???
+set shiftwidth=0 " autoindent width <<, >>, == (0 -> tabstop value)
 set expandtab " tab as spaces
+autocmd FileType ruby set tabstop=2
+autocmd FileType python set tabstop=2
 
 " Mappings
 let mapleader = "," " mapping namespace
@@ -49,8 +51,10 @@ nnoremap <C-j> 3j3<C-e>
 nnoremap <C-k> 3k3<C-y>
  " newline
 nmap <CR> o<Esc>
- " ex command prefix
+ " ex commands
 nnoremap º :
+nnoremap ºw :w<CR>
+nnoremap ºq :q<CR>
  " replace/substitute operator remap
 nnoremap R s
 vnoremap R s
@@ -120,27 +124,31 @@ if &term =~ '256color'
 endif
 
 " Learning
-" basic toolbelt: r,ysp,hjkl,xd,uC-R,ia,v,:eE
+" basic toolbelt: r,ysp,hjkl,xd,uC-R,v,:eE,iIaAoO,bBwWeE
+
 " 'fx','Fx','tX','TX' find and 'till motions
 " 'c' for replacing
-" 'r' for replacing a character
 " 'A' for appending at the end of line
 " 'I' for inserting at the beginning of the file
+" '.' repeats last command
+" '#gg' go to line #
+" 'G' to go to last line
+" 'gv' to reselect last block
+" 'ctrl-o' and 'ctrl-i' to go back and forth between cursor positions
+" 'ctrl-o' in insert mode allows a normal mode command
+
 " '%' for searching matching parentheses/braces/brackets
 " '/' and '?' for searching patterns
 " '*' and '#' for searching words
 " 'g*' and 'g#' for matching words
-" '#gg' go to line #
-" 'G' to go to last line
-" 'gv' to reselect last block
-" 'ctrl-o' in insert mode allows a normal mode command
-" 'ctrl-o' and 'ctrl-i' to go back and forth between cursor positions
+
 " ':s' search and replace
 "  - 'g' flag allows multiple replaces in a single line
 "  - 'c' flag asks for confirmation
 "  - ranges: '%' all file, '.,$' from current line until the eof
+
+" tip: an empty string will repeat a search pattern (?)
 " tip: command + search pattern
-" tip: an empty string will repeat a search pattern
 
 " To Investigate
 " http://vim.wikia.com/wiki/Indenting_source_code
