@@ -27,6 +27,9 @@ imagemagick
 xclip
 trash-cli
 xbindkeys
+
+tree
+htop
 "
 
 for i in $list
