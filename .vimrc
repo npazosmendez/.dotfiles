@@ -50,7 +50,10 @@ nnoremap <C-Up> 3k3<C-y>
 nnoremap <C-j> 3j3<C-e>
 nnoremap <C-k> 3k3<C-y>
  " newline
-nmap <CR> o<Esc>
+nnoremap <CR> o<Esc>
+ " search shortcut (for some reason mapping * doesn't work)
+nnoremap <kMultiply> *N
+nnoremap # *N
  " ex commands
 nnoremap º :
 nnoremap ºw :w<CR>
@@ -102,6 +105,7 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
  " execute within file
 autocmd FileType python nnoremap <buffer> <F9> :!clear;python %<cr>
+autocmd FileType ruby nnoremap <buffer> <F9> :!clear;ruby %<cr>
 autocmd FileType c nnoremap <buffer> <F9> :!clear && gcc -std=c99 % && echo "Program Start:" && echo && ./a.out && echo && rm a.out <cr>
 autocmd FileType cpp nnoremap <buffer> <F9> :!clear && g++ -std=c++11 -g -Wall % && echo "Program Start:" && echo && ./a.out && echo && rm a.out <cr>
 autocmd FileType tex nnoremap <buffer> <F9> :!clear;pdflatex main.tex;okular main.pdf &<cr>
@@ -137,8 +141,17 @@ endif
 " 'ctrl-o' and 'ctrl-i' to go back and forth between cursor positions
 " 'ctrl-o' in insert mode allows a normal mode command
 
+" 'ctrl-r ctrl-w' in command mode pastes the current word in the command line
+
 " '%' for searching matching parentheses/braces/brackets
 " '/' and '?' for searching patterns
+"   - 'n/N' to move between apparitions
+"   - 'gn' if an operator is pending, operates ONLY on the match
+"     (without it visually selects the next match, but I don't care)
+"  Replacement Options
+"   1. ':.,$s/foo/bar/gc'
+"   2. '*' then 'cgn' then 'bar<ESC>' then '.' ...
+"   3. '*' then 'cw' then 'bar<ESC>' then 'n' then '.' ...
 " '*' and '#' for searching words
 " 'g*' and 'g#' for matching words
 
@@ -149,6 +162,7 @@ endif
 
 " tip: an empty string will repeat a search pattern (?)
 " tip: command + search pattern
+" tip: command + count + motion
 
 " To Investigate
 " http://vim.wikia.com/wiki/Indenting_source_code
@@ -157,10 +171,9 @@ endif
 " Plugin 'christoomey/vim-run-interactive' for bash commands from vim
 " Plugin 'pbrisbin/vim-mkdir' for creating directories
 " Plugin 'vim-syntastic' for dark magic
-" nmap <S-CR> O<Esc> don't work
+" https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 " map redo to S-u?
-" avoiding esc inoremap <S-CR> <ESC> don't work
-" research about how mapping works, what happens to original mappings, recursion, etc
 " add mapping to block indent in visual mode
-" shift-arrow keys moves cursor to the beginning :(
-" search in delimitMate how to move to closest opening/closing braces
+" shift-move should retain vertical position :(
+" g-move to duplicate lines (should retain vertical position)
+" avoid 'vim' command opening non-text files/directories
