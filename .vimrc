@@ -164,6 +164,14 @@ endif
 " tip: command + search pattern
 " tip: command + count + motion
 
+" Maps
+" Commands are mapped, not keystrokes! It's misleading because that's what it looks
+" like sometimes. For example, given the map 'h' -> 'y', pressing 'h' inmediatly sends
+" an 'y', but this behaviour changes if there're other commands with the command
+" mapped as a prefix. If the map were backwards, 'y' -> 'h', pressing 'y' gives you
+" a window were an 'y' is on hold, and only after a while it registers as an 'h'
+" Also, 'non-recursive' means that the definition is non-recursive, not something else
+
 " To Investigate
 " http://vim.wikia.com/wiki/Indenting_source_code
 " https://blog.aaronbieber.com/2013/12/03/master-vim-registers-with-ctrl-r.html
