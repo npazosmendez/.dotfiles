@@ -4,4 +4,6 @@
 "\e[B": history-search-forward
 
 # Convenient line clear
-"\C-k": kill-whole-line
+"\C-d": kill-whole-line
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
