@@ -2,3 +2,19 @@
 # http://www.behrooz.xyz/home/tips-and-tricks/the-blog/amoreconvenientincrementalsearchinterminalbashlinux
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
+# So, for some reason a single binding screws up the default
+# behaviour of the terminal, stealing those from git repos
+# allow the use of the Home/End keys
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+# allow the use of the Delete/Insert keys
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
