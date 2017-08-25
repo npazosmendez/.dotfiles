@@ -2,8 +2,3 @@
 # http://www.behrooz.xyz/home/tips-and-tricks/the-blog/amoreconvenientincrementalsearchinterminalbashlinux
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-
-# Convenient line clear
-"\C-d": kill-whole-line
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
