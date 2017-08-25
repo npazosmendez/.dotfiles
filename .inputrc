@@ -3,8 +3,11 @@
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 
-# So, for some reason a single binding screws up the default
-# behaviour of the terminal, stealing those from git repos
+# Convenient line kill
+"\C-d": kill-whole-line
+
+# for some reason a single binding screws up the default behaviour of the
+# terminal, so stealing those from other git repos (thx guiz)
 # allow the use of the Home/End keys
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
