@@ -17,6 +17,7 @@ libreoffice
 g++
 nasm
 texlive-full
+gdb
 
 build-essential
 libx11-dev
