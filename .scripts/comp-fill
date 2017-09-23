@@ -1,0 +1,7 @@
+#!/bin/sh 
+
+for d in */ ;
+do
+    cp $HOME/study/comp/rta.cpp $d
+    touch $d/in
+done

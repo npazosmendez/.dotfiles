@@ -1,0 +1,6 @@
+#!/bin/sh 
+
+tmux new-session -d 'vim rta.cpp'
+tmux split-window -h -p 38
+tmux split-window -v -t :.0 -p 22 'vim in'
+tmux -2 attach-session -d 
