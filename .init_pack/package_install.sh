@@ -28,7 +28,7 @@ imagemagick
 xclip
 trash-cli
 xbindkeys
-
+unrar
 tree
 htop
 "
