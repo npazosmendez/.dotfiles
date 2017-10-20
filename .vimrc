@@ -127,6 +127,10 @@ if &term =~ '256color'
   highlight NonText ctermbg=none
   highlight Statement ctermbg=none
 endif
+" Octave Syntax
+augroup filetypedetect
+     au! BufRead,BufNewFile *.m setfiletype octave
+augroup END 
 
 " Learning
 " basic toolbelt: r,ysp,hjkl,xd,uC-R,v,:eE,iIaAoO,bBwWeE
