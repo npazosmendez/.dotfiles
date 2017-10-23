@@ -16,6 +16,7 @@ libreoffice
 
 g++
 nasm
+openjdk-8-jdk
 texlive-full
 gdb
 
