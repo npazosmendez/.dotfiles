@@ -15,10 +15,12 @@ gimp
 libreoffice
 
 g++
+gdb
 nasm
 openjdk-8-jdk
 texlive-full
-gdb
+octave
+octave-statistics
 
 build-essential
 libx11-dev
