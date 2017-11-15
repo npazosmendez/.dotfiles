@@ -7,7 +7,7 @@ Plugin 'VundleVim/Vundle.vim' " package manager
 Plugin 'flazz/vim-colorschemes' " colorscheme pack
 Plugin 'SuperTab' " autocompletion
 Plugin 'vim-lastplace' " remember cursor position across sessions
-Plugin 'vim-fugitive' " git integration
+Plugin 'tpope/vim-fugitive' " git integration
 Plugin 'delimitMate.vim' " automatic parenthesis/braces close
 call vundle#end()
 
