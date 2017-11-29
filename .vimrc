@@ -10,7 +10,7 @@ Plugin 'vim-lastplace' " remember cursor position across sessions
 Plugin 'tpope/vim-fugitive' " git integration
 Plugin 'delimitMate.vim' " automatic parenthesis/braces close
 call vundle#end()
-
+ 
 " File Type Recognition
 filetype plugin indent on 
 
@@ -26,6 +26,7 @@ set virtualedit=block " allow cursor anywhere in block vmode
 set incsearch " search from currently typed
 set noswapfile " what it says on the tin
 set nowrapscan " no file wrapping while searching
+set backspace=indent,eol,start " allow backspace over everything
 
 " Colorschemes
 colo Monokai
