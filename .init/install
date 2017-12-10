@@ -1,0 +1,110 @@
+#!/bin/bash
+
+SCRIPT=`basename $0`
+DROOT=$HOME/.dotfiles
+
+# ---------------
+# Installing
+#----------------
+echo "+Installing essential packages..."
+
+list="
+git
+vim-gtk
+tmux
+
+dolphin
+ffmpegthumbs
+mplayerthumbs
+kffmpegthumbnailer
+okular
+kolourpaint4
+gimp
+libreoffice
+
+g++
+gdb
+nasm
+openjdk-8-jdk
+texlive-full
+octave
+octave-statistics
+
+build-essential
+libx11-dev
+libgtk2.0-dev
+libreadline-dev
+
+imagemagick
+xclip
+trash-cli
+xbindkeys
+unrar
+tree
+htop
+"
+
+for i in $list
+do
+  sudo apt-get install $i -y
+  if [[ $? > 0 ]]
+  then
+    echo "Installation of package $i failed"
+    exit
+  else
+    echo "Package $i installed"
+    echo ""
+  fi
+done
+
+echo ""
+
+# ------------------
+# Symlinking
+# ------------------
+echo "+Symlinking configuration files to home..."
+
+KEEPLIST=( .git .gitignore .init README.md)
+
+shopt -s dotglob # allows (temporarily) wildcard to match hidden files
+
+for absfile in $DROOT/*
+do
+    file=`basename $absfile`
+
+    keep=true
+    for pattern in ${KEEPLIST[@]}
+    do
+        if [ $pattern = $file ]
+        then
+            keep=false
+        fi
+    done
+
+    if [ $keep = true ]
+    then
+        echo "Sym linking $DROOT/$file to $HOME/$file"
+        ln -sf $DROOT/$file $HOME/$file
+    fi
+done
+
+shopt -u dotglob # we go restore the globbing behaviour back to normal
+
+echo ""
+echo ""
+
+# --------------------
+# Configuring
+# -------------------
+echo "+Configuring applications..."
+
+# Tmux
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+tmux start-server   # start a server but don't attach to it
+tmux new-session -d   # create a new session but don't attach to it either
+~/.tmux/plugins/tpm/scripts/install_plugins.sh   # install the plugins
+tmux kill-server   # killing the server is not required, I guess
+
+# Vim
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
