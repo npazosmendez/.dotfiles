@@ -1,17 +1,57 @@
 #!/bin/bash
 
-SCRIPT=`basename $0`
-DROOT=$HOME/.dotfiles
-IROOT=$DROOT/.init
+# ---------------
+# Installing
+#----------------
+echo "+Installing essential packages..."
 
-if [ -f $IROOT/download ]; then
-    source $IROOT/download
-fi
+list="
+git
+vim-gtk
+tmux
 
-if [ -f $IROOT/symlink ]; then
-    source $IROOT/symlink
-fi
+dolphin
+ffmpegthumbs
+mplayerthumbs
+kffmpegthumbnailer
+okular
+kolourpaint4
+gimp
+libreoffice
 
-if [ -f $IROOT/configure ]; then
-    source $IROOT/configure
-fi
+g++
+gdb
+nasm
+openjdk-8-jdk
+texlive-full
+octave
+octave-statistics
+
+build-essential
+libx11-dev
+libgtk2.0-dev
+libreadline-dev
+
+imagemagick
+xclip
+trash-cli
+xbindkeys
+unrar
+tree
+htop
+"
+
+for i in $list
+do
+  sudo apt-get install $i -y
+  if [[ $? > 0 ]]
+  then
+    echo "Installation of package $i failed"
+    exit
+  else
+    echo "Package $i installed"
+    echo ""
+  fi
+done
+
+echo ""
