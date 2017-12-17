@@ -108,3 +108,10 @@ tmux kill-server   # killing the server is not required, I guess
 # Vim
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+# Bash
+echo "" >> $HOME/.bashrc
+echo "# User configuration" >> $HOME/.bashrc
+echo "if [ -f ~/.bash_user ]; then" >> $HOME/.bashrc
+echo "    . ~/.bash_user" >> $HOME/.bashrc
+echo "fi" >> $HOME/.bashrc
