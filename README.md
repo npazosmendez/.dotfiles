@@ -2,7 +2,7 @@
 
 To fire up the whole thing run the following:
 
-`git clone git@github.com:eyesmd/dotfiles.git $HOME/.dotfiles && $HOME/.dotfiles/.init/run`
+`cd $HOME && git clone git@github.com:eyesmd/dotfiles.git .dotfiles && $HOME/.dotfiles/.init/run`
 
 ## Todo
  * Handle more gracefully the case where tmux and vim folders already exist
