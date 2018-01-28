@@ -60,6 +60,9 @@ nnoremap # *N
 nnoremap º :
 nnoremap ºw :w<CR>
 nnoremap ºq :q<CR>
+nnoremap \| :
+nnoremap \|w :w<CR>
+nnoremap \|q :q<CR>
  " replace/substitute operator remap
 nnoremap R s
 vnoremap R s
