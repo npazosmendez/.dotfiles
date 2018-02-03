@@ -14,14 +14,18 @@ shopt -s histappend
 stty -ixon
 
 # Cuda
-export PATH=$PATH:/usr/local/cuda/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib:/usr/local/lib
-export CPLUS_INCLUDE_PATH=/usr/local/cuda/include
+#export PATH=$PATH:/usr/local/cuda/bin
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib:/usr/local/lib
+#export CPLUS_INCLUDE_PATH=/usr/local/cuda/include
 
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
-export PATH="$PATH:$JAVA_HOME/bin"
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
+#export PATH="$PATH:$JAVA_HOME/bin"
 
 # Grails
-export GRAILS_HOME=$HOME/apps/grails-2.4.4
-export PATH="$PATH:$GRAILS_HOME/bin"
+#export GRAILS_HOME=$HOME/.sdkman/candidates/grails/2.4.4
+#export PATH=$PATH:$GRAILS_HOME/bin
+
+# IntelliJ
+#export IDEA_HOME=$HOME/apps/idea
+#export PATH=$PATH:$IDEA_HOME/bin
