@@ -3,13 +3,17 @@
 # ---------------
 # Installing
 #----------------
-echo "+Installing essential packages..."
 
-list="
+echo "+Installing packages..."
+
+ESSENTIAL="
 git
 vim-gtk
 tmux
+"
 
+FULL="
+$ESSENTIAL
 dolphin
 ffmpegthumbs
 mplayerthumbs
@@ -32,26 +36,48 @@ build-essential
 libx11-dev
 libgtk2.0-dev
 libreadline-dev
+python-setuptools
 
+rar
 imagemagick
 xclip
 xbindkeys
 unrar
 tree
 htop
-python-setuptools
 "
 
-for i in $list
-do
-  sudo apt-get install $i -y
-  if [[ $? > 0 ]]
+list=$ESSENTIAL
+if (( $# > 1 ))
+then
+  echo "Too many arguments, aborting"
+  exit
+elif (( $# == 1))
+then
+  if [[ $1 == "-f" ]]
   then
-    echo "Installation of package $i failed"
-    exit
+    list=$FULL
   else
-    echo "Package $i installed"
-    echo ""
+    echo "Unknown parameter, aborting"
+    exit
+  fi
+fi
+
+for pkg in $list
+do
+  regex_normal="^$pkg[[:space:]]*install$"
+  regex_platform="^$pkg:.*install$"
+  if dpkg --get-selections | grep -q -e "$regex_normal" -e "$regex_platform" >/dev/null
+  then
+    echo -e "\e[90mPackage $pkg skipped\e[39m"
+  else
+    sudo apt-get install $pkg -y -qq 2> /dev/null
+    if (( $? > 0 ))
+    then
+      echo -e "\e[41mERROR: Package $pkg failed\e[49m"
+    else
+      echo -e "\e[92mPackage $pkg installed\e[39m"
+    fi
   fi
 done
 

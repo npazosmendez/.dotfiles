@@ -5,7 +5,7 @@ DROOT=$HOME/.dotfiles
 IROOT=$DROOT/.init
 
 if [ -f $IROOT/install ]; then
-    source $IROOT/install
+    source $IROOT/install -f
 fi
 
 if [ -f $IROOT/symlink ]; then

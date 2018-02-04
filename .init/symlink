@@ -5,6 +5,7 @@ DROOT=$HOME/.dotfiles
 # ------------------
 # Symlinking
 # ------------------
+
 echo "+Symlinking configuration files to home..."
 
 KEEPLIST=( .git .gitignore .init README.md)
@@ -31,7 +32,7 @@ do
     fi
 done
 
-shopt -u dotglob # we go restore the globbing behaviour back to normal
+shopt -u dotglob # we restore the globbing behaviour back to normal
 
 echo ""
 echo ""

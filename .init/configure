@@ -3,6 +3,7 @@
 # --------------------
 # Configuring
 # -------------------
+
 echo "+Configuring applications..."
 
 # Tmux
