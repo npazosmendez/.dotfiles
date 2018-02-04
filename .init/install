@@ -26,6 +26,7 @@ openjdk-8-jdk
 texlive-full
 octave
 octave-statistics
+python-pip
 
 build-essential
 libx11-dev
@@ -38,6 +39,7 @@ xbindkeys
 unrar
 tree
 htop
+python-setuptools
 "
 
 for i in $list
