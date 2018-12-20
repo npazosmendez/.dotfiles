@@ -9,6 +9,7 @@ Plugin 'SuperTab' " autocompletion
 Plugin 'vim-lastplace' " remember cursor position across sessions
 Plugin 'tpope/vim-fugitive' " git integration
 Plugin 'delimitMate.vim' " automatic parenthesis/braces close
+Plugin 'petRUShka/vim-opencl' " opencl support
 call vundle#end()
  
 " File Type Recognition
@@ -29,9 +30,35 @@ set nowrapscan " no file wrapping while searching
 set backspace=indent,eol,start " allow backspace over everything
 
 " Colorschemes
+" Monokai, vividchalk, zenburn
 colo Monokai
-"colo vividchalk
-"colo zenburn
+
+" TODO
+" Use Right Alt instead of Control for editor movement
+" Ctrl-Movement is broken with line wraps
+" Go to last position
+" i and a motions
+" Better tutorial within vimscript
+" Ctrl-d closing vim (following tmux)
+" Format .vimrc better (use .tmux.conf as guide)
+" Comment lines
+" Read https://danielmiessler.com/study/vim/
+" http://vim.wikia.com/wiki/Indenting_source_code
+" https://blog.aaronbieber.com/2013/12/03/master-vim-registers-with-ctrl-r.html
+" http://vim.wikia.com/wiki/Using_undo_branches Plugin 'command-t' for more dark magic
+" Plugin 'christoomey/vim-run-interactive' for bash commands from vim
+" Plugin 'pbrisbin/vim-mkdir' for creating directories
+" Plugin 'vim-syntastic' for dark magic
+" https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+" map redo to S-u?
+" add mapping to block indent in visual mode
+" shift-move should retain vertical position :(
+" g-move to duplicate lines (should retain vertical position)
+" avoid 'vim' command opening non-text files/directories
+" EXPERIMENTAL
+inoremap jk <ESC>
+
+
 
 " Indentations
 set noautoindent   " ??
@@ -46,7 +73,7 @@ autocmd FileType python set tabstop=2
 
 " Mappings
 let mapleader = "," " mapping namespace
- " editor movement
+" editor movement
 nnoremap <C-Down> 3j3<C-e>
 nnoremap <C-Up> 3k3<C-y>
 nnoremap <C-j> 3j3<C-e>
@@ -180,17 +207,3 @@ augroup END
 " mapped as a prefix. If the map were backwards, 'y' -> 'h', pressing 'y' gives you
 " a window were an 'y' is on hold, and only after a while it registers as an 'h'
 " Also, 'non-recursive' means that the definition is non-recursive, not something else
-
-" To Investigate
-" http://vim.wikia.com/wiki/Indenting_source_code
-" https://blog.aaronbieber.com/2013/12/03/master-vim-registers-with-ctrl-r.html
-" http://vim.wikia.com/wiki/Using_undo_branches Plugin 'command-t' for more dark magic
-" Plugin 'christoomey/vim-run-interactive' for bash commands from vim
-" Plugin 'pbrisbin/vim-mkdir' for creating directories
-" Plugin 'vim-syntastic' for dark magic
-" https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
-" map redo to S-u?
-" add mapping to block indent in visual mode
-" shift-move should retain vertical position :(
-" g-move to duplicate lines (should retain vertical position)
-" avoid 'vim' command opening non-text files/directories
