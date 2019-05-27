@@ -16,3 +16,4 @@ To fire up the whole thing run the following:
  * prompt that starts on project root
  * super clean
  * tabs on vim! that'd be cool
+ * include zsh and oh my zsh
