@@ -1,10 +1,22 @@
 #!/bin/bash
 
-# Sexiest prompt
-PS1="\W$ "
+# Prompt with branch info
+function color_my_prompt {
+    # local __user_and_host="\[\033[01;32m\]\u@\h"
+    local __cur_location="\[\033[01;34m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __mercurial_branch='`hg identify --branch 2> /dev/null`'
+    local __prompt_tail="\[\033[35m\]$"
+    local __last_color="\[\033[00m\]"
+    export PS1="$__cur_location $__git_branch_color$__git_branch$__mercurial_branch$__prompt_tail$__last_color "
+}
+color_my_prompt
 
 # Avoids writing duplicated commands to history
 export HISTCONTROL=erasedups
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # Appends modified commands to history instead of overwriting them
 shopt -s histappend
@@ -13,19 +25,6 @@ shopt -s histappend
 # https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
 
-# Cuda
-#export PATH=$PATH:/usr/local/cuda/bin
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib:/usr/local/lib
-#export CPLUS_INCLUDE_PATH=/usr/local/cuda/include
+# Check the window size after each command
+shopt -s checkwinsize
 
-# Java
-#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
-#export PATH="$PATH:$JAVA_HOME/bin"
-
-# Grails
-#export GRAILS_HOME=$HOME/.sdkman/candidates/grails/2.4.4
-#export PATH=$PATH:$GRAILS_HOME/bin
-
-# IntelliJ
-#export IDEA_HOME=$HOME/apps/idea
-#export PATH=$PATH:$IDEA_HOME/bin

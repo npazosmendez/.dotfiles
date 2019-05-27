@@ -1,0 +1,8 @@
+\timing
+\set HISTSIZE 2000
+\x auto
+\set HISTCONTROL ignoredups
+\set HISTFILE ~/.psql_history- :DBNAME
+
+\pset pager off
+\set PROMPT1 '%[%033]0;psql %/%007%]%/%R%# '
