@@ -14,7 +14,6 @@ tmux
 
 FULL="
 $ESSENTIAL
-dolphin
 ffmpegthumbs
 mplayerthumbs
 kffmpegthumbnailer
@@ -26,17 +25,9 @@ libreoffice
 g++
 gdb
 nasm
-openjdk-8-jdk
 texlive-full
-octave
-octave-statistics
 python-pip
 ruby-dev
-
-qt5-default
-qtcreator
-qtbase5-examples
-qtbase5-doc-html
 
 build-essential
 libx11-dev
