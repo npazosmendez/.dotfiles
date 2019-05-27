@@ -17,3 +17,4 @@ To fire up the whole thing run the following:
  * super clean
  * tabs on vim! that'd be cool
  * include zsh and oh my zsh
+ * check this out https://github.com/zsh-users/zsh-autosuggestions
