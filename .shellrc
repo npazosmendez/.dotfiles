@@ -9,4 +9,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Pip packages path
 export PATH=$PATH:$HOME/.local/bin
 
+# Virtualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    . /usr/local/bin/virtualenvwrapper.sh
+fi
 
