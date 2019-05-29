@@ -40,3 +40,6 @@ pullall() {
 		)
 	done
 }
+
+# Go path
+export GOPATH=$HOME/go
