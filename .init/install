@@ -28,6 +28,7 @@ nasm
 texlive-full
 python-pip
 ruby-dev
+ipython
 
 build-essential
 libx11-dev
