@@ -1,0 +1,13 @@
+{
+    "go.useLanguageServer": true,
+    "window.zoomLevel": -1,
+    "workbench.colorTheme": "Monokai",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.renderIndentGuides": false,
+    "python.jediEnabled": false,
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E402,W503,E722"
+    ]
+}
