@@ -42,6 +42,14 @@ pullall() {
 	done
 }
 
+# Fast compiling for CP
+function compile() {
+    source=${1:-rta.cpp}
+	cmd="g++ -std=c++11 -O2 -Wconversion -Wshadow -Wall -Wextra -D_GLIBCXX_DEBUG ${source} -o rta && time ./rta < in"
+	echo ${cmd}
+	eval ${cmd}
+}
+
 # Go path
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin/

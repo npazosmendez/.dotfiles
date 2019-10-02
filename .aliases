@@ -5,6 +5,7 @@ alias st='subl'
 alias cl='clear'
 alias l='ls'
 alias ..='cd ..'
+alias c='compile'
 
 # Application Arguments
 alias tmux='tmux -2' # force 256 colors 
