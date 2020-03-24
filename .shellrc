@@ -2,16 +2,20 @@
 
 # Reset Color
 Color_Off='\033[0m'       # Text Reset
+Reset_Style='\033[0m'     # Text Reset
+
+# Styling
+Bold='\033[1m'
 
 # Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
+Black='\033[30m'        # Black
+Red='\033[31m'          # Red
+Green='\033[32m'        # Green
+Yellow='\033[33m'       # Yellow
+Blue='\033[34m'         # Blue
+Purple='\033[35m'       # Purple
+Cyan='\033[36m'         # Cyan
+White='\033[37m'        # White
 
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -48,6 +52,34 @@ function compile() {
 	cmd="g++ -std=c++11 -O2 -Wconversion -Wshadow -Wall -Wextra -D_GLIBCXX_DEBUG ${source} -o rta && time ./rta < in"
 	echo ${cmd}
 	eval ${cmd}
+}
+
+#!/bin/bash
+cleancython(){
+	echo -n "Are you sure? [Y/n] "
+  read REPLY
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		echo Recursive cleaning *.pyc, *.c, *.so
+		find \( -name '*.pyc' -o -name '*.c' -o -name '*.so' \) -delete
+	else
+		echo Aborting
+	fi
+}
+
+template() {
+  # TODO
+  cp ~/code/jonnotebook/codigo/algoesalgo/template.cpp template.cpp
+
+  if [ -z "$1" ]
+  then
+    cp template.cpp rta.cpp && touch in;
+  else
+    for letter in $( eval echo {a..$1} ) ; do
+      mkdir $letter && cp template.cpp $letter/rta.cpp && touch $letter/in;
+    done
+  fi
+
+  rm template.cpp
 }
 
 # Go path

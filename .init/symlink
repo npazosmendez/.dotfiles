@@ -8,7 +8,7 @@ DROOT=$HOME/.dotfiles
 
 echo "+Symlinking configuration files to home..."
 
-KEEPLIST=( .git .gitignore .init README.md)
+SKIP=( .git .gitignore .init README.md)
 
 shopt -s dotglob # allows (temporarily) wildcard to match hidden files
 
@@ -16,16 +16,16 @@ for absfile in $DROOT/*
 do
     file=`basename $absfile`
 
-    keep=true
-    for pattern in ${KEEPLIST[@]}
+    symlink=true
+    for pattern in ${SKIP[@]}
     do
         if [ $pattern = $file ]
         then
-            keep=false
+            symlink=false
         fi
     done
 
-    if [ $keep = true ]
+    if [ $symlink = true ]
     then
         echo "Sym linking $DROOT/$file to $HOME/$file"
         ln -sf $DROOT/$file $HOME/$file
@@ -34,5 +34,4 @@ done
 
 shopt -u dotglob # we restore the globbing behaviour back to normal
 
-echo ""
 echo ""

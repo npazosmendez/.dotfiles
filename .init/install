@@ -9,11 +9,12 @@ echo "+Installing packages..."
 ESSENTIAL="
 git
 vim-gtk
-tmux
+bash-completion
 "
 
 FULL="
 $ESSENTIAL
+tmux
 ffmpegthumbs
 mplayerthumbs
 kffmpegthumbnailer
