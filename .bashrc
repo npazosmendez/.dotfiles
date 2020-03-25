@@ -32,7 +32,10 @@ shopt -s histappend
 
 # Disables 'feature' activated with Ctrl-S which disables terminal output
 # https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
-stty -ixon
+if [[ $- == *i* ]] # if interactive
+then
+    stty -ixon
+fi
 
 # Check the window size after each command
 shopt -s checkwinsize

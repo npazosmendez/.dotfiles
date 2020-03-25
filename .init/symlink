@@ -27,6 +27,7 @@ do
 
     if [ $symlink = true ]
     then
+        # TODO: handle directories well
         echo "Sym linking $DROOT/$file to $HOME/$file"
         ln -sf $DROOT/$file $HOME/$file
     fi
