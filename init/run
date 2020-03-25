@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SCRIPT=`basename $0`
+DROOT=$HOME/.dotfiles
+IROOT=$DROOT/init
+
+$IROOT/install -f && $IROOT/symlink && $IROOT/configure

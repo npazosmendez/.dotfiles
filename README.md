@@ -2,7 +2,7 @@
 
 To fire up the whole thing run the following:
 
-`cd $HOME && git clone git@github.com:npazosmendez/.dotfiles.git && $HOME/.dotfiles/.init/run`
+`cd $HOME && git clone git@github.com:npazosmendez/.dotfiles.git && $HOME/.dotfiles/init/run`
 
 ## Todo
  * Double run proof

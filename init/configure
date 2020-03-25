@@ -5,3 +5,7 @@ echo "+Configuring applications..."
 # Vim
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+# Git
+git config --global alias.co checkout
+git config --global alias.st status
