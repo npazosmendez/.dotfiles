@@ -1,21 +1,24 @@
 # Common config for all shells
 
-# Reset Color
-Color_Off='\033[0m'       # Text Reset
-Reset_Style='\033[0m'     # Text Reset
+# Path
+export PATH=$PATH:$HOME/.bin # Personal commands
+export PATH=$PATH:$HOME/.local/bin # Pip packages path
+export PATH=$PATH:/usr/local/go/bin/ # Go
 
+# Reset Style
+# TODO: get rid of this variables, not a good idea
+Reset_Style='\033[0m'
 # Styling
 Bold='\033[1m'
-
 # Regular Colors
-Black='\033[30m'        # Black
-Red='\033[31m'          # Red
-Green='\033[32m'        # Green
-Yellow='\033[33m'       # Yellow
-Blue='\033[34m'         # Blue
-Purple='\033[35m'       # Purple
-Cyan='\033[36m'         # Cyan
-White='\033[37m'        # White
+Black='\033[30m'
+Red='\033[31m'
+Green='\033[32m'
+Yellow='\033[33m'
+Blue='\033[34m'
+Purple='\033[35m'
+Cyan='\033[36m'
+White='\033[37m'
 
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -23,65 +26,11 @@ White='\033[37m'        # White
 # Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Pip packages path
-export PATH=$PATH:$HOME/.local/bin
-
 # Virtualenvwrapper
 export WORKON_HOME=~/env
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     . /usr/local/bin/virtualenvwrapper.sh
 fi
 
-pullall() {
-	for dir in `find . -maxdepth 1 -mindepth 1 -type d`
-	do
-		(cd $dir &&
-			if [ -d .git ]; then
-				echo -e "${Green}Found a git repository at ${Yellow}$dir${Green}, attempting to pull from master${Color_Off}"
-				CURRENT_BRANCH=`git branch | grep \* | cut -d ' ' -f2`
-				git checkout -q master
-				git pull && git checkout -q $CURRENT_BRANCH
-			fi;
-		)
-	done
-}
-
-# Fast compiling for CP
-function compile() {
-    source=${1:-rta.cpp}
-	cmd="g++ -std=c++11 -O2 -Wconversion -Wshadow -Wall -Wextra -D_GLIBCXX_DEBUG ${source} -o rta && time ./rta < in"
-	echo ${cmd}
-	eval ${cmd}
-}
-
-#!/bin/bash
-cleancython(){
-	echo -n "Are you sure? [Y/n] "
-  read REPLY
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		echo Recursive cleaning *.pyc, *.c, *.so
-		find \( -name '*.pyc' -o -name '*.c' -o -name '*.so' \) -delete
-	else
-		echo Aborting
-	fi
-}
-
-template() {
-  # TODO
-  cp ~/code/jonnotebook/codigo/algoesalgo/template.cpp template.cpp
-
-  if [ -z "$1" ]
-  then
-    cp template.cpp rta.cpp && touch in;
-  else
-    for letter in $( eval echo {a..$1} ) ; do
-      mkdir $letter && cp template.cpp $letter/rta.cpp && touch $letter/in;
-    done
-  fi
-
-  rm template.cpp
-}
-
 # Go path
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin/

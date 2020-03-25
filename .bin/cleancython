@@ -1,0 +1,10 @@
+#!/bin/sh 
+read -p "Are you sure? [Y/n] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    # TODO: make this portable, works only on bash
+    echo Recursive cleaning *.pyc, *.c, *.so
+    find \( -name '*.pyc' -o -name '*.c' -o -name '*.so' \) -delete
+else
+    echo Aborting
+fi 

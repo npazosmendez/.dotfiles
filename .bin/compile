@@ -1,0 +1,7 @@
+#!/bin/sh 
+# Fast compiling for CP
+
+source=${1:-rta.cpp}
+cmd="g++ -std=c++11 -O2 -Wconversion -Wshadow -Wall -Wextra -D_GLIBCXX_DEBUG ${source} -o rta && time ./rta < in"
+echo ${cmd}
+eval ${cmd}

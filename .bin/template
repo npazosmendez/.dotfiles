@@ -1,0 +1,14 @@
+#!/bin/sh 
+# TODO
+cp ~/code/jonnotebook/codigo/algoesalgo/template.cpp template.cpp
+
+if [ -z "$1" ]
+then
+cp template.cpp rta.cpp && touch in;
+else
+for letter in $( eval echo {a..$1} ) ; do
+    mkdir $letter && cp template.cpp $letter/rta.cpp && touch $letter/in;
+done
+fi
+
+rm template.cpp
