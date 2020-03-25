@@ -20,7 +20,7 @@ fi
 
 # Prompt
 function light_prompt {
-    export PS1="$Bold$Blue\w$Reset_Style $ "
+    export PS1="[\$?] $Bold$Blue\w$Reset_Style $ "
 }
 function fancy_prompt {
     if [[ `type -t __git_ps1` != 'function' ]]
@@ -37,7 +37,7 @@ function fancy_prompt {
     local __git_branch='`__git_ps1 2> /dev/null`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
-    export PS1="$__cur_location $__git_branch_color$__git_branch$__mercurial_branch$__prompt_tail$__last_color "
+    export PS1="[\$?] $__cur_location$__git_branch_color$__git_branch$__mercurial_branch$__prompt_tail$__last_color "
 }
 fancy_prompt
 unset fancy_prompt
