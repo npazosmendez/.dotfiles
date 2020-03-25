@@ -25,9 +25,14 @@ do
         fi
     done
 
+
     if [ $symlink = true ]
     then
-        # TODO: handle directories well
+        if [[ -d $absfile ]] && [[ -e $HOME/$file ]]
+        then
+            echo "Directory $HOME/$file already exists, skipping."
+            continue
+        fi
         echo "Sym linking $DROOT/$file to $HOME/$file"
         ln -sf $DROOT/$file $HOME/$file
     fi
