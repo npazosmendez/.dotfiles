@@ -37,7 +37,9 @@ function fancy_prompt {
     local __git_branch='`__git_ps1 2> /dev/null`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
-    export PS1="[\$?] $__cur_location$__git_branch_color$__git_branch$__mercurial_branch$__prompt_tail$__last_color "
+    local __ret_code='`ret=$?; if [ $ret -ne 0 ]; then echo [$ret]; fi`'
+
+    export PS1="$__ret_code$__cur_location$__git_branch_color$__git_branch$__prompt_tail$__last_color "
 }
 fancy_prompt
 unset fancy_prompt
