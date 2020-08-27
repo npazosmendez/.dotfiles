@@ -1,5 +1,7 @@
 # Common config for all shells
 
+export EDITOR='vim'
+
 # Path
 export PATH=$PATH:$HOME/.bin # Personal commands
 export PATH=$PATH:$HOME/.local/bin # Pip packages path
