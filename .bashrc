@@ -53,7 +53,7 @@ unset light_prompt
 # Avoids writing duplicated commands to history
 export HISTCONTROL=erasedups
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=5000
 
 # Appends modified commands to history instead of overwriting them
 shopt -s histappend
@@ -72,3 +72,4 @@ if [ -f ~/.fzf.bash ]
 then
   . ~/.fzf.bash
 fi
+

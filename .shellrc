@@ -1,12 +1,13 @@
 # Common config for all shells
 
 export EDITOR='vim'
-
+export BROWSER='/opt/google/chrome/chrome'
 # Path
 export PATH=$PATH:$HOME/.bin # Personal commands
 export PATH=$PATH:$HOME/.local/bin # Pip packages path
 export PATH=$PATH:/usr/local/go/bin/ # Go
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:/opt/jdk8u265-b01/bin
 
 # Reset Style
 # TODO: get rid of this variables, not a good idea
@@ -37,3 +38,6 @@ fi
 
 # Go path
 export GOPATH=$HOME/go
+
+# Java home
+export JAVA_HOME=/opt/jdk8u265-b01
