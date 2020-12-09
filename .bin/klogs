@@ -1,0 +1,10 @@
+#!/bin/sh 
+NAMESPACE_GREP=$1
+POD_GREP=$2
+
+namespace=`kubectl get namespaces | grep $NAMESPACE_GREP | awk '{print $1}'`
+pod=`kubectl get pods -n $namespace | grep $POD_GREP | awk '{print $1}'`
+
+cmd="kubectl logs -n $namespace $pod -f --tail=50"
+echo "Running '$cmd'"
+eval $cmd
