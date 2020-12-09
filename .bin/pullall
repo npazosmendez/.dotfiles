@@ -1,12 +1,14 @@
 #!/bin/sh 
 BRANCH=${1:-master}
+Green="\e[92m"
+Reset_Style="\e[0m"
 for dir in `find . -maxdepth 1 -mindepth 1 -type d`
 do
     (cd $dir &&
         if [ -d .git ]; then
-            echo "${Green}Found a git repository at ${Yellow}$dir${Green}, attempting to pull from ${BRANCH}${Reset_Style}"
+            echo -en "Pulling ${BRANCH} @ ${Green}`basename $dir`${Reset_Style}... "
             CURRENT_BRANCH=`git branch | grep \* | cut -d ' ' -f2`
-            git checkout -q ${BRANCH} 2> /dev/null && git pull 
+            (git checkout -q ${BRANCH} 2> /dev/null && git pull) || echo "No branch ${BRANCH}."
             git checkout -q $CURRENT_BRANCH
         fi;
     )
