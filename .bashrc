@@ -1,3 +1,24 @@
+
+# MacOS specific
+if [[ $OSTYPE == 'darwin'* ]]; then
+  # Ignore bash deprecation msg
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+
+  # Homebrew paths
+  export HOMEBREW_PREFIX="/opt/homebrew";
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+  export HOMEBREW_REPOSITORY="/opt/homebrew";
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+  # Git completion and prompt
+  if [ -d `brew --prefix git`/etc/bash_completion.d/ ]; then
+    . `brew --prefix git`/etc/bash_completion.d/git-prompt.sh
+    . `brew --prefix git`/etc/bash_completion.d/git-completion.bash
+  fi
+fi
+
 # Common shell configuration
 if [ -f ~/.shellrc ]; then
     . ~/.shellrc
