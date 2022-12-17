@@ -44,6 +44,10 @@ if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     . /usr/share/git/completion/git-prompt.sh
 fi
 
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
 # Prompt
 function light_prompt {
     export PS1="[\$?] $Bold$Blue\w$Reset_Style $ "
@@ -73,8 +77,13 @@ unset light_prompt
 
 # Avoids writing duplicated commands to history
 export HISTCONTROL=erasedups
-HISTSIZE=1000
-HISTFILESIZE=5000
+export HISTSIZE=
+export HISTFILESIZE=5000
+export HISTTIMEFORMAT="[%F %T] "
+
+export HISTFILE=~/.bash_eternal_history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 
 # Appends modified commands to history instead of overwriting them
 shopt -s histappend
