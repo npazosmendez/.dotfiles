@@ -6,6 +6,7 @@ alias cl='clear'
 alias l='ls'
 alias ..='cd ..'
 alias c='compile'
+alias k='kubectl'
 
 # Application Arguments
 alias tmux='tmux -2' # force 256 colors 
@@ -19,4 +20,9 @@ alias egrep='egrep --color=auto'
 # Handy
 alias o='xdg-open'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+function gch() {
+    git branch --sort=-committerdate -r --format "%(refname:short)" | grep -v "origin/HEAD"  | awk -F/ '{ st = index($0,"/");print substr($0,st+1)}' | tr -d ' ' | fzf --layout=reverse --color=light --preview='git log {} --color' --query="$1" | xargs git checkout
+}
+
+alias mrc='git rev-parse HEAD | cut -c1-7'
 

@@ -1,11 +1,11 @@
 #!/bin/sh 
-BRANCH=${1:-master}
 Green="\e[92m"
 Reset_Style="\e[0m"
 for dir in `find . -maxdepth 1 -mindepth 1 -type d`
 do
     (cd $dir &&
         if [ -d .git ]; then
+            BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
             echo -en "Pulling ${BRANCH} @ ${Green}`basename $dir`${Reset_Style}... "
             CURRENT_BRANCH=`git branch | grep \* | cut -d ' ' -f2`
             (git checkout -q ${BRANCH} 2> /dev/null && git pull) || echo "No branch ${BRANCH}."

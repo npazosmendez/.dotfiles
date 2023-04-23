@@ -8,7 +8,9 @@ export PATH=$PATH:$HOME/.local/bin # Pip packages path
 export PATH=$PATH:/usr/local/go/bin/ # Go
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/opt/jdk8u265-b01/bin
-
+export PATH=$PATH:/opt/GoLand/bin
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/nicolas/.dotnet/tools"
 # Reset Style
 # TODO: get rid of this variables, not a good idea
 Reset_Style='\033[0m'

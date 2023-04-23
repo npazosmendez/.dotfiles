@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cvt 1368 768 
+# xrandr only works in X11 sessions, not Wayland
+[ "$XDG_SESSION_TYPE" = x11 ] || exit 0
+xrandr -d :0 --output HDMI-1 --auto --right-of HDMI-0 --primary
