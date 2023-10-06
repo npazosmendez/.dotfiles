@@ -15,6 +15,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'vim-python/python-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'powerline/powerline'
+Plugin 'jamessan/vim-gnupg'
 call vundle#end()
 
 " File Type Recognition

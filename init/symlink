@@ -8,7 +8,7 @@ DROOT=$HOME/.dotfiles
 
 echo "+Symlinking configuration files to home..."
 
-SKIP=( .git .gitignore init README.md)
+SKIP=( .git .gitignore init README.md .config)
 
 shopt -s dotglob # allows (temporarily) wildcard to match hidden files
 
