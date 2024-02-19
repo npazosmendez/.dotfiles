@@ -26,3 +26,12 @@ function gch() {
 
 alias mrc='git rev-parse HEAD | cut -c1-7'
 
+# kc as in kube-context
+function kc() {
+    if [ -z "$1" ]; then
+        CONTEXT=$(kubectl config get-contexts --output=name | fzf)
+    else 
+        CONTEXT=$(kubectl config get-contexts --output=name | fzf --filter "$1" | tail -n1)
+    fi
+    kubectl config use-context $CONTEXT
+}
