@@ -1,0 +1,36 @@
+#!/bin/sh 
+
+buscar_tercer_miercoles() {
+    local date=$1
+    local wednesday_count=0
+    while [ $wednesday_count -lt 3 ]; do
+        if [ "$(date -d "$date" +%u)" = "3" ]; then
+            wednesday_count=$((wednesday_count+1))
+        fi
+        if [ $wednesday_count -eq 3 ]; then
+            break
+        fi
+
+        date=$(date -d "$date + 1 day" +%Y-%m-%d)
+    done
+
+    echo $date
+}
+
+
+tercer_miercoles=$(buscar_tercer_miercoles "$(date -d "$(date +%Y-%m-01)" +%Y-%m-%d)")
+if [ "$(date -d "$tercer_miercoles" +%s)" -ge "$(date +%s)" ]; then
+    tercer_miercoles=$(buscar_tercer_miercoles "$(date -d "$(date +%Y-%m-01) - 1 month" +%Y-%m-%d)")
+fi
+day=$(date -d "$tercer_miercoles" +%A)
+echo -n "$tercer_miercoles ($day): "
+curl https://api.bluelytics.com.ar/v2/historical?day=${tercer_miercoles} 2>/dev/null | jq .blue.value_avg
+
+echo -n "Hoy: "
+curl https://api.bluelytics.com.ar/v2/latest 2>/dev/null | jq .blue.value_avg
+
+echo -n "Ayer: "
+curl https://api.bluelytics.com.ar/v2/historical?day=$(date -d "yesterday" +%Y-%m-%d) 2>/dev/null | jq .blue.value_avg
+
+
+
