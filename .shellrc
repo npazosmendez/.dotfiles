@@ -46,5 +46,6 @@ export PATH=$PATH:$GOBIN
 # Java home
 export JAVA_HOME=/usr/lib/jvm/default
 
-# kubuectl
+# kubuectl & gcloud
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+source /opt/google-cloud-cli/path.bash.inc
