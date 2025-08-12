@@ -36,10 +36,11 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -49,7 +50,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec konsole
+# bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -185,6 +186,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym Shift+Print exec "flameshot gui -s -c"
 bindsym Shift+Ctrl+Print exec "flameshot gui -c"
+bindsym Scroll_Lock exec "xdotool click 1"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -200,8 +202,11 @@ for_window [class="zoom" title="Zoom Meeting"] floating disable
 for_window [class="Chrome-chrome" window_role="pop-up"] floating enable
 for_window [class="Pavucontrol"] floating enable, resize set height 80 ppt, resize set width 40 ppt, move position center
 
+for_window [class="Google-chrome" title="Open Files"] floating enable,resize set height 80 ppt, resize set width 80 ppt, move position center
 for_window [class="Google-chrome" instance="calendar.google.com__calendar_u_1"] floating enable,resize set height 80 ppt, resize set width 80 ppt, move position center
 for_window [class="Google-chrome" instance="web.whatsapp.com"] move to workspace "Chats"
+for_window [class="^Code$" title="Save As"] floating enable,resize set height 80 ppt, resize set width 80 ppt, move position center
+
 for_window [class="^Code$"] move to workspace 1, layout tabbed, workspace number 1
 for_window [class="^TelegramDesktop$"] move to workspace "Chats"
 # for_window [class="^Code$" urgent="latest"] focus
@@ -213,6 +218,7 @@ exec_always "feh --bg-scale /usr/share/wallpapers/Honeywave/contents/images/5120
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id "setxkbmap -layout us -variant altgr-intl"
+# exec --no-startup-id "localectl --no-convert set-x11-keymap us altgr-in"
 exec_always --no-startup-id "dunst -config ~/.config/dunst/dunstrc"
 
 exec_always --no-startup-id "xrandr -d :0 --output HDMI-1 --auto --right-of HDMI-0 --primary"
@@ -220,7 +226,27 @@ exec_always --no-startup-id "xrandr -d :0 --output HDMI-1 --auto --right-of HDMI
 # For transparent windows
 exec --no-startup-id picom -CGb --fade-in-step=1 --fade-out-step=1 --fade-delta=0
 
-exec_always --no-startup-id "xrandr --output HDMI-0 --auto --left-of HDMI-1 --rotate left"
+exec_always --no-startup-id "xrandr --output HDMI-0 --auto --left-of HDMI-1 --rotate normal"
+#exec_always --no-startup-id "Keylight_Controller-x86_64.AppImage"
+#exec_always --no-startup-id "[[ `ps aux | grep -e [K]eylight_Controller-x86_64.AppImage` ]] || Keylight_Controller-x86_64.AppImage"
+exec_always --no-startup-id "run_singleton.sh 'Keylight_Controller-x86_64.AppImage'"
+# Esto no funcionó tan bien como esperaba
+# exec_always --no-startup-id ~/.i3/i3-chrome-tab-dragging.py
 
 exec i3-msg workspace 0:Sec
 workspace 0:Sec output HDMI-0
+workspace 1 output HDMI-1
+workspace 2 output HDMI-1
+workspace 3 output HDMI-1
+workspace 4 output HDMI-1
+workspace 5 output HDMI-1
+workspace 6 output HDMI-1
+
+
+
+
+#bindsym $mod+Return [instance="sterminal"] scratchpad show, move position center
+#bindsym $mod+Escape [con_id=__focused__ instance="sterminal"] move scratchpad
+bindsym $mod+Return exec --no-startup-id scratchpad_script.sh "sterminal" "konsole --name sterminal"
+for_window [instance="sterminal"] floating enable, resize set 3000 1680, move scratchpad
+#exec_always --no-startup-id konsole --name sterminal &
